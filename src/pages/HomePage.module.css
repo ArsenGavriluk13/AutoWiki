@@ -1,0 +1,46 @@
+.homePage {
+  min-height: 100vh;
+  color: white;
+  width: 100%;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 0 40px 30px 40px;
+  box-sizing: border-box;
+}
+
+.homePage main > div:first-child {
+  max-width: 800px;
+}
+
+.brandGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+  .brandGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .homePage {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .brandGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .homePage main > div:first-child {
+    max-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .brandGrid {
+    gap: 10px;
+  }
+}

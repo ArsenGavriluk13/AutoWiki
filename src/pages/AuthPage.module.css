@@ -1,0 +1,148 @@
+.authPage {
+  min-height: 100vh;
+  background-color: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 15px;
+  box-sizing: border-box;
+}
+
+.backButtonContainer {
+  width: 100%;
+  max-width: auto;
+  margin: 0 auto 20px auto;
+}
+
+.contentWrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+  font-size: 3.5em;
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.splitLayout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0px;
+  max-width: auto;
+  width: 100%;
+}
+
+.formContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  background-color: #1a1a1a;
+  border: 1px solid red;
+  border-radius: 8px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formTitle {
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.formButton {
+  margin-top: 15px;
+  padding: 11px 22px;
+  font-size: 1rem;
+}
+
+.divider {
+  font-size: 2.3em;
+  font-weight: bold;
+  align-self: center;
+  padding: 0 15px;
+  color: #aaa;
+  flex-shrink: 0;
+  padding-top: calc(40px + 1.8em * 1.1 + 20px);
+  margin-top: 0;
+}
+
+.forgotPasswordButton {
+  background-color: #333;
+  color: #aaa;
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  text-align: center;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  width: 100%;
+}
+
+.forgotPasswordButton:hover {
+  background-color: #444;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .splitLayout {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 450px;
+  }
+  .formContainer {
+    width: 100%;
+  }
+  .divider {
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+  .form {
+    max-width: 100%;
+    padding: 35px;
+  }
+  .backButtonContainer {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+  }
+  .authPage {
+    padding: 15px;
+  }
+  .backButtonContainer {
+    margin-bottom: 15px;
+  }
+  .form {
+    padding: 25px;
+    gap: 15px;
+  }
+  .formTitle {
+    font-size: 1.6em;
+  }
+}
