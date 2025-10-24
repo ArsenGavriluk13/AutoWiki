@@ -1,0 +1,130 @@
+.brandPage {
+  min-height: 100vh;
+  color: white;
+  width: 100%;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 0 40px 30px 40px;
+  box-sizing: border-box;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.brandLogo {
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.pageTitle {
+  font-size: 2em;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.searchContainer {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.modelSearchInput {
+  flex-grow: 1;
+  margin-bottom: 0 !important;
+}
+
+.yearFilter {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 0 15px;
+  color: white;
+  font-size: 1rem;
+  min-width: 150px;
+  cursor: pointer;
+  box-sizing: border-box;
+  height: 48px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23cccccc' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 1em;
+  flex-shrink: 0;
+}
+
+.yearFilter:focus {
+  outline: none;
+  border-color: red;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 992px) {
+  .modelGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .brandPage {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .modelGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .searchContainer {
+    max-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .topSection {
+    margin-bottom: 20px;
+  }
+  .brandLogo {
+    max-height: 40px;
+  }
+  .pageTitle {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+  .searchContainer {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 30px;
+  }
+  .yearFilter {
+    width: 100%;
+    min-width: unset;
+  }
+  .modelGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
