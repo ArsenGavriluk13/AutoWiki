@@ -3,8 +3,8 @@ import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ModelCard from '../components/ModelCard';
 import Header from '../components/Header';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const BRAND_INFO = { name: 'Audi', logoUrl: '/logos/audi.png' };
 const MOCK_MODELS = [
   { id: 'a3', modelName: 'A3' },
   { id: 'a4', modelName: 'A4' },
@@ -25,9 +25,15 @@ const MOCK_MODELS = [
 ];
 
 const BrandPage = () => {
-  const handleGoBack = () => console.log('Go back');
-  const handleModelClick = (modelName) =>
-    console.log(`Maps to ${BRAND_INFO.name} ${modelName}`);
+  const navigate = useNavigate();
+  const { brandId } = useParams();
+  const brandName = brandId
+    ? brandId.charAt(0).toUpperCase() + brandId.slice(1)
+    : 'Unknown Brand';
+  const brandLogoUrl = brandId ? `/logos/${brandId}.png` : null;
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className={styles.brandPage}>
@@ -35,16 +41,19 @@ const BrandPage = () => {
       <main>
         <div className={styles.topSection}>
           <Button onClick={handleGoBack}>&lt;- Back to brands</Button>
-          {BRAND_INFO.logoUrl && (
+          {brandLogoUrl && (
             <img
-              src={BRAND_INFO.logoUrl}
-              alt={`${BRAND_INFO.name} logo`}
+              src={brandLogoUrl}
+              alt={`${brandName} logo`}
               className={styles.brandLogo}
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
             />
           )}
         </div>
 
-        <h2 className={styles.pageTitle}>{BRAND_INFO.name}&apos;s models</h2>
+        <h2 className={styles.pageTitle}>{brandName}&apos;s models</h2>
 
         <div className={styles.searchContainer}>
           <SearchBar
@@ -67,9 +76,10 @@ const BrandPage = () => {
           {MOCK_MODELS.map((model) => (
             <ModelCard
               key={model.id}
-              brandName={BRAND_INFO.name}
+              brandId={brandId}
+              modelId={model.id}
+              brandName={brandName}
               modelName={model.modelName}
-              onClick={() => handleModelClick(model.modelName)}
             />
           ))}
         </div>

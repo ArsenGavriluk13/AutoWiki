@@ -1,8 +1,14 @@
 import styles from './BrandCard.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const BrandCard = ({ logoUrl, name, country, onClick }) => {
+const BrandCard = ({ id, logoUrl, name, country }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/brands/${id}`);
+  };
   return (
-    <div className={styles.brandCard} onClick={onClick}>
+    <div className={styles.brandCard} onClick={handleClick}>
       <div className={styles.logoWrapper}>
         {logoUrl ? (
           <img

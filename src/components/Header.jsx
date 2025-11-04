@@ -1,13 +1,7 @@
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const NavLink = ({ to, children }) => (
-    <a href={to} className={styles.navLink}>
-      {' '}
-      {children}{' '}
-    </a>
-  );
-
   return (
     <div className={styles.headerWrapper}>
       <header className={styles.header}>
@@ -17,8 +11,8 @@ const Header = () => {
           </a>
         </div>
         <nav className={styles.navigation}>
-          <NavLink to="/auth">Sign in / up</NavLink>
-          <NavLink to="/">Home</NavLink>
+          <Link to="/auth">Sign in / up</Link>
+          <Link to="/">Home</Link>
         </nav>
       </header>
     </div>

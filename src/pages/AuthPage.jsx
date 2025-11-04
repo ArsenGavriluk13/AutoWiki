@@ -1,8 +1,10 @@
 import styles from './AuthPage.module.css';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const AuthPage = () => {
+  const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
     console.log('Register');
@@ -12,15 +14,13 @@ const AuthPage = () => {
     console.log('Login');
   };
   const handleGoBack = () => {
-    console.log('Go back to brands');
+    navigate(-1);
   };
 
   return (
     <div className={styles.authPage}>
       <div className={styles.backButtonContainer}>
-        <Button onClick={handleGoBack} className={styles.backButton}>
-          &lt;- Back to brands
-        </Button>
+        <Button onClick={handleGoBack}>&lt;- Back to brands</Button>
       </div>
       <div className={styles.contentWrapper}>
         <h1 className={styles.title}>Sign in / up</h1>
