@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
-    'cypress/globals': true
+    'cypress/globals': true,
   },
   extends: [
     'eslint:recommended',
