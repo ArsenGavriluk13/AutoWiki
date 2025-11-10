@@ -7,7 +7,7 @@ const ProfilePage = () => {
       <Header />
       <main style={{ padding: '40px 0' }}>
         <h1 style={{ color: 'lime', marginBottom: '20px' }}>
-          🔒 Секретний Профіль 🔒
+          Секретний Профіль
         </h1>
         <p>Цю сторінку бачать лише авторизовані користувачі.</p>
         <br />
