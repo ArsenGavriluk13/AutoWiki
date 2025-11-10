@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2020: true,
     'cypress/globals': true,
-    node: true, // <-- ДОДАЙ ЦЕЙ РЯДОК (виправляє помилку 'module' is not defined)
+    node: true,
   },
   extends: [
     'eslint:recommended',
