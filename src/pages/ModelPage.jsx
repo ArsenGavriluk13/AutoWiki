@@ -1,31 +1,51 @@
-import styles from './ModelPage.module.css';
+import styles from './ModelPage.module.css'; // <-- ПРАВИЛЬНИЙ ШЛЯХ
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { useParams, useNavigate } from 'react-router-dom';
-
-const MODEL_DATA = {
-  year: '2023',
-  description: 'Audi A4 – це популярний середньорозмірний седан...',
-  imageUrl: '/images/audi-a4.jpg',
-  facts: [
-    "Об'єм двигуна: від 1.4 до 3.0 літра",
-    'Доступні комплектації: Base, Premium, S line',
-    'Потужність: від 150 до 347 к.с.',
-  ],
-};
+import useFetch from '../hooks/useFetch';
 
 const ModelPage = () => {
   const { brandId, modelId } = useParams();
   const navigate = useNavigate();
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+  const {
+    data: modelDetails,
+    loading: detailsLoading,
+    error: detailsError,
+  } = useFetch(`/modelDetails/${modelId}`);
+  const { data: brandInfo, loading: brandLoading } = useFetch(
+    `/brands/${brandId}`,
+  );
+  const handleGoBack = () => navigate(-1);
 
-  const displayBrandName = brandId
-    ? brandId.charAt(0).toUpperCase() + brandId.slice(1)
-    : '';
-  const displayModelName = modelId ? modelId.toUpperCase() : '';
+  if (detailsLoading || brandLoading) {
+    return (
+      <div className={styles.modelPage}>
+        <Header />
+        <main className={styles.mainContent}>
+          <p style={{ textAlign: 'center', fontSize: '1.2em' }}>
+            Завантаження моделі...
+          </p>
+        </main>
+      </div>
+    );
+  }
+
+  if (detailsError || !modelDetails || !brandInfo) {
+    return (
+      <div className={styles.modelPage}>
+        <Header />
+        <main className={styles.mainContent}>
+          <Button onClick={handleGoBack} className={styles.backButton}>
+            &lt;- Назад до моделей
+          </Button>
+          <p style={{ color: 'red', textAlign: 'center' }}>
+            Помилка: Не вдалося завантажити дані моделі.
+          </p>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.modelPage}>
@@ -37,19 +57,19 @@ const ModelPage = () => {
         <div className={styles.contentGrid}>
           <div className={styles.infoColumn}>
             <h1 className={styles.modelTitle}>
-              {displayBrandName} {displayModelName}
+              {brandInfo.name} {modelDetails.modelName || modelId}
             </h1>
             <p className={styles.modelMeta}>
-              {displayBrandName}, {MODEL_DATA.year}
+              {brandInfo.name}, {modelDetails.year}
             </p>
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>Опис</h2>
-              <p className={styles.description}>{MODEL_DATA.description}</p>
+              <p className={styles.description}>{modelDetails.description}</p>
             </section>
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>Цікаві факти</h2>
               <ul className={styles.factsList}>
-                {MODEL_DATA.facts.map((fact, index) => (
+                {modelDetails.facts.map((fact, index) => (
                   <li key={index}>{fact}</li>
                 ))}
               </ul>
@@ -57,8 +77,8 @@ const ModelPage = () => {
           </div>
           <div className={styles.imageColumn}>
             <img
-              src={MODEL_DATA.imageUrl}
-              alt={`${displayBrandName} ${displayModelName}`}
+              src={modelDetails.imageUrl}
+              alt={`${brandInfo.name} ${modelDetails.modelName}`}
               className={styles.modelImage}
               onError={(e) => {
                 e.target.onerror = null;

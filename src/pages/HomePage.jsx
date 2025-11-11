@@ -1,42 +1,43 @@
-import styles from './HomePage.module.css';
+import { useState, useMemo } from 'react'; // <-- 1. ПРАВИЛЬНИЙ ІМПОРТ ХУКІВ
+import styles from './HomePage.module.css'; // <-- 2. ПРАВИЛЬНИЙ ШЛЯХ
 import BrandCard from '../components/BrandCard';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-
-const MOCK_BRANDS = [
-  { id: 'audi', name: 'Audi', country: 'Germany', logoUrl: '/logos/audi.png' },
-  { id: 'bmw', name: 'BMW', country: 'Germany', logoUrl: '/logos/bmw.png' },
-  {
-    id: 'ferrari',
-    name: 'Ferrari',
-    country: 'Italy',
-    logoUrl: '/logos/ferrari.png',
-  },
-  {
-    id: 'porsche',
-    name: 'Porsche',
-    country: 'Germany',
-    logoUrl: '/logos/porsche.png',
-  },
-  {
-    id: 'mercedes',
-    name: 'Mercedes',
-    country: 'Germany',
-    logoUrl: '/logos/mercedes.png',
-  },
-  { id: 'ford', name: 'Ford', country: 'USA', logoUrl: '/logos/ford.png' },
-  { id: 'mazda', name: 'Mazda', country: 'Japan', logoUrl: '/logos/mazda.png' },
-  {
-    id: 'pagani',
-    name: 'Pagani',
-    country: 'Italy',
-    logoUrl: '/logos/pagani.png',
-  },
-];
+import { useNavigate } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
 
 const HomePage = () => {
-  const handleBrandClick = (brandName) => {
-    console.log(`Maps to ${brandName} page`);
+  const { data: brands, loading, error } = useFetch('/brands');
+  const navigate = useNavigate();
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('All Countries');
+
+  const filteredBrands = useMemo(() => {
+    if (!brands) return [];
+
+    return brands.filter((brand) => {
+      const nameMatch = brand.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+
+      const countryValue = selectedCountry;
+      const countryMatch =
+        countryValue === 'All Countries' || brand.country === countryValue;
+
+      return nameMatch && countryMatch;
+    });
+  }, [brands, searchTerm, selectedCountry]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  const handleCountryChange = (event) => {
+    setSelectedCountry(event.target.value);
+  };
+
+  const handleBrandClick = (brandId) => {
+    navigate(`/brands/${brandId}`);
   };
 
   return (
@@ -47,16 +48,39 @@ const HomePage = () => {
           searchPlaceholder="Search car brands..."
           filterOptions={['All Countries', 'Germany', 'USA', 'Japan', 'Italy']}
           showFilter={true}
+          searchValue={searchTerm}
+          onSearchChange={handleSearchChange}
+          filterValue={selectedCountry}
+          onFilterChange={handleCountryChange}
         />
-        <div className={styles.brandGrid}>
-          {MOCK_BRANDS.map((brand) => (
-            <BrandCard
-              key={brand.id}
-              {...brand}
-              onClick={() => handleBrandClick(brand.name)}
-            />
-          ))}
-        </div>
+
+        {loading && (
+          <p style={{ textAlign: 'center', fontSize: '1.2em' }}>
+            Завантаження брендів...
+          </p>
+        )}
+        {error && (
+          <p style={{ color: 'red', textAlign: 'center' }}>Помилка: {error}</p>
+        )}
+
+        {!loading && !error && (
+          <div className={styles.brandGrid}>
+            {filteredBrands.length > 0 ? (
+              filteredBrands.map((brand) => (
+                <BrandCard
+                  key={brand.id}
+                  id={brand.id}
+                  logoUrl={brand.logoUrl}
+                  name={brand.name}
+                  country={brand.country}
+                  onClick={() => handleBrandClick(brand.id)}
+                />
+              ))
+            ) : (
+              <p style={{ textAlign: 'center' }}>Бренди не знайдено.</p>
+            )}
+          </div>
+        )}
       </main>
     </div>
   );

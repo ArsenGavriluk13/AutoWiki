@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 
 const useAuthStatus = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return { isLoggedIn };
 };
