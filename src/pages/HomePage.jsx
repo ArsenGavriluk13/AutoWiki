@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'; // <-- 1. ПРАВИЛЬНИЙ ІМПОРТ ХУКІВ
-import styles from './HomePage.module.css'; // <-- 2. ПРАВИЛЬНИЙ ШЛЯХ
+import { useState, useMemo } from 'react';
+import styles from './HomePage.module.css';
 import BrandCard from '../components/BrandCard';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';

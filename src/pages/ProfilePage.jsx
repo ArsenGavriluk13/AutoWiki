@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
   return (
-    <div style={{ padding: '0 15px', maxWidth: '1200px', margin: '0 auto' }}>
+    <div style={{ padding: '15px 15px', maxWidth: 'auto', margin: '0 auto' }}>
       <Header />
-      <main style={{ padding: '40px 0' }}>
+      <main style={{ padding: '40px 550px' }}>
         <h1 style={{ color: 'lime', marginBottom: '20px' }}>
-          🔒 Секретний Профіль 🔒
+          Секретний Профіль
         </h1>
         <p>Цю сторінку бачать лише авторизовані користувачі.</p>
         <br />

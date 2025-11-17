@@ -5,21 +5,29 @@ import AuthPage from './pages/AuthPage';
 import ModelPage from './pages/ModelPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfilePage from './pages/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage';
+import GuestRoute from './components/GuestRoute';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
-
         <Route path="/brands/:brandId" element={<BrandPage />} />
-
         <Route
           path="/brands/:brandId/models/:modelId"
           element={<ModelPage />}
         />
 
-        <Route path="/auth" element={<AuthPage />} />
+        {/* 2. Обертаємо /auth у GuestRoute */}
+        <Route
+          path="/auth"
+          element={
+            <GuestRoute>
+              <AuthPage />
+            </GuestRoute>
+          }
+        />
 
         <Route
           path="/profile"
@@ -30,8 +38,8 @@ function App() {
           }
         />
 
-        <Route path="*" element={<div>Сторінка не знайдена (404)</div>} />
-      </Routes>{' '}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }

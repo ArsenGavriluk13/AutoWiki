@@ -1,4 +1,4 @@
-import styles from './ModelPage.module.css'; // <-- ПРАВИЛЬНИЙ ШЛЯХ
+import styles from './ModelPage.module.css';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -37,7 +37,7 @@ const ModelPage = () => {
         <Header />
         <main className={styles.mainContent}>
           <Button onClick={handleGoBack} className={styles.backButton}>
-            &lt;- Назад до моделей
+            &lt;- Back to models
           </Button>
           <p style={{ color: 'red', textAlign: 'center' }}>
             Помилка: Не вдалося завантажити дані моделі.
@@ -52,7 +52,7 @@ const ModelPage = () => {
       <Header />
       <main className={styles.mainContent}>
         <Button onClick={handleGoBack} className={styles.backButton}>
-          &lt;- Назад до моделей
+          &lt;- Back to models
         </Button>
         <div className={styles.contentGrid}>
           <div className={styles.infoColumn}>

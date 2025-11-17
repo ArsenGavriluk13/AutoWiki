@@ -2,11 +2,11 @@ import { useState } from 'react';
 import styles from './AuthPage.module.css';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+import { useAuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const AuthPage = () => {
-  const { login, register, loading, error } = useAuth();
+  const { login, register, loading, error } = useAuthContext();
   const navigate = useNavigate();
 
   const [loginEmail, setLoginEmail] = useState('');
