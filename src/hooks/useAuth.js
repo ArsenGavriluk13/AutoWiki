@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE_URL = 'http://localhost:3001';
+
 export const useAuth = () => {
   const [token, setToken] = useState(() => localStorage.getItem('authToken'));
   const [user, setUser] = useState(null);
@@ -10,66 +12,70 @@ export const useAuth = () => {
 
   useEffect(() => {
     if (token) {
-      setUser({ email: 'test@test.com' });
-      console.log('User is logged in (token found)');
+      const savedUser = localStorage.getItem('user');
+      if (savedUser) {
+        setUser(JSON.parse(savedUser));
+      }
     }
   }, [token]);
 
-  const login = async (email, password) => {
+  const authRequest = async (endpoint, body) => {
     setLoading(true);
     setError(null);
-    console.log('Attempting login (mock)...', { email, password });
+    try {
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
 
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (email === 'test@test.com' && password === 'password') {
-          console.log('Login successful (mock)');
-          const fakeToken = 'fake-jwt-token-12345';
-          localStorage.setItem('authToken', fakeToken);
-          setToken(fakeToken);
-          setUser({ email: email });
-          setLoading(false);
-          navigate('/');
-          resolve({ success: true });
-        } else {
-          console.log('Login failed (mock)');
-          setError('Invalid email or password (mock)');
-          setLoading(false);
-          resolve({
-            success: false,
-            message: 'Invalid email or password (mock)',
-          });
-        }
-      }, 1500);
-    });
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || data || 'Помилка сервера');
+      }
+
+      if (data && data.accessToken) {
+        localStorage.setItem('authToken', data.accessToken);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        setToken(data.accessToken);
+        setUser(data.user);
+      }
+      return { success: true };
+    } catch (err) {
+      console.error('Auth error:', err.message);
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const register = async (email, password) => {
-    setLoading(true);
-    setError(null);
-    console.log('Attempting registration (mock)...', { email, password });
+  const login = async (email, password) => {
+    const result = await authRequest('/login', { email, password });
+    if (result.success) {
+      navigate('/');
+    }
+  };
 
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (email.toLowerCase() === 'used@test.com') {
-          console.log('Registration failed, email in use (mock)');
-          setError('Email is already in use (mock)');
-          setLoading(false);
-          resolve({ success: false, message: 'Email in use (mock)' });
-        } else {
-          console.log('Registration successful (mock)');
-          setLoading(false);
-          alert('Registration successful! Please log in. (mock)');
-          navigate('/auth');
-          resolve({ success: true });
-        }
-      }, 1500);
+  const register = async (email, password, name, avatarUrl) => {
+    const result = await authRequest('/register', {
+      email,
+      password,
+      name,
+      avatarUrl,
     });
+
+    if (result.success) {
+      alert('Реєстрація успішна! Ви автоматично увійшли.');
+      navigate('/');
+    }
   };
 
   const logout = () => {
-    console.log('Logging out (mock)');
     localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
     setToken(null);
     setUser(null);
     navigate('/');
