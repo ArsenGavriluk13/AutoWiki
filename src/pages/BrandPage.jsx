@@ -36,7 +36,9 @@ const BrandPage = () => {
     });
   }, [models, searchTerm, selectedYear]);
 
-  const handleGoBack = () => navigate(-1);
+  const handleGoBack = () => {
+    navigate('/');
+  };
   const handleModelClick = (modelId) => {
     navigate(`/brands/${brandId}/models/${modelId}`);
   };
