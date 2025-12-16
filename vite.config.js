@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     istanbul({
+      cypress: true,
       include: 'src/*',
       exclude: ['node_modules', 'test/'],
       extension: ['.js', '.jsx', '.ts', '.tsx'],
@@ -14,6 +15,6 @@ export default defineConfig({
   ],
   server: {
     host: true,
-    port: 3002,
+    port: 5173,
   },
 });

@@ -16,7 +16,9 @@ const ModelPage = () => {
   const { data: brandInfo, loading: brandLoading } = useFetch(
     `/brands/${brandId}`,
   );
-  const handleGoBack = () => navigate(-1);
+  const handleGoBack = () => {
+    navigate(`/brands/${brandId}`);
+  };
 
   if (detailsLoading || brandLoading) {
     return (
