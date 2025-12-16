@@ -1,0 +1,226 @@
+{
+  "brands": [
+    {
+      "id": "audi",
+      "name": "Audi",
+      "country": "Germany",
+      "logoUrl": "/logos/audi.png"
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "country": "Germany",
+      "logoUrl": "/logos/bmw.png"
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "country": "Italy",
+      "logoUrl": "/logos/ferrari.png"
+    },
+    {
+      "id": "porsche",
+      "name": "Porsche",
+      "country": "Germany",
+      "logoUrl": "/logos/porsche.png"
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes",
+      "country": "Germany",
+      "logoUrl": "/logos/mercedes.png"
+    },
+    {
+      "id": "ford",
+      "name": "Ford",
+      "country": "USA",
+      "logoUrl": "/logos/ford.png"
+    },
+    {
+      "id": "mazda",
+      "name": "Mazda",
+      "country": "Japan",
+      "logoUrl": "/logos/mazda.png"
+    },
+    {
+      "id": "pagani",
+      "name": "Pagani",
+      "country": "Italy",
+      "logoUrl": "/logos/pagani.png"
+    }
+  ],
+  "models": [
+    { "id": "a3", "brandId": "audi", "modelName": "A3", "year": "2023" },
+    { "id": "a4", "brandId": "audi", "modelName": "A4", "year": "2023" },
+    { "id": "a5", "brandId": "audi", "modelName": "A5", "year": "2022" },
+    { "id": "a6", "brandId": "audi", "modelName": "A6", "year": "2021" },
+    { "id": "a7", "brandId": "audi", "modelName": "A7", "year": "2022" },
+    { "id": "a8", "brandId": "audi", "modelName": "A8", "year": "2023" },
+    { "id": "q3", "brandId": "audi", "modelName": "Q3", "year": "2023" },
+    { "id": "q5", "brandId": "audi", "modelName": "Q5", "year": "2024" },
+    { "id": "q7", "brandId": "audi", "modelName": "Q7", "year": "2022" },
+    { "id": "q8", "brandId": "audi", "modelName": "Q8", "year": "2023" },
+    { "id": "r8", "brandId": "audi", "modelName": "R8", "year": "2023" },
+    { "id": "tt", "brandId": "audi", "modelName": "TT", "year": "2021" },
+    {
+      "id": "e-tron",
+      "brandId": "audi",
+      "modelName": "e-tron GT",
+      "year": "2024"
+    },
+    { "id": "m3", "brandId": "bmw", "modelName": "M3", "year": "2023" },
+    { "id": "m5", "brandId": "bmw", "modelName": "M5", "year": "2022" },
+    { "id": "i8", "brandId": "bmw", "modelName": "i8", "year": "2020" },
+    { "id": "x5", "brandId": "bmw", "modelName": "X5", "year": "2023" },
+    { "id": "x6", "brandId": "bmw", "modelName": "X6", "year": "2024" },
+    { "id": "i7", "brandId": "bmw", "modelName": "i7", "year": "2023" },
+    {
+      "id": "f8",
+      "brandId": "ferrari",
+      "modelName": "F8 Tributo",
+      "year": "2022"
+    },
+    {
+      "id": "sf90",
+      "brandId": "ferrari",
+      "modelName": "SF90 Stradale",
+      "year": "2023"
+    },
+    { "id": "roma", "brandId": "ferrari", "modelName": "Roma", "year": "2021" },
+    {
+      "id": "296_gtb",
+      "brandId": "ferrari",
+      "modelName": "296 GTB",
+      "year": "2023"
+    },
+    {
+      "id": "911",
+      "brandId": "porsche",
+      "modelName": "911 Carrera",
+      "year": "2023"
+    },
+    {
+      "id": "taycan",
+      "brandId": "porsche",
+      "modelName": "Taycan",
+      "year": "2024"
+    },
+    {
+      "id": "cayenne",
+      "brandId": "porsche",
+      "modelName": "Cayenne",
+      "year": "2022"
+    },
+    {
+      "id": "panamera",
+      "brandId": "porsche",
+      "modelName": "Panamera",
+      "year": "2021"
+    },
+    {
+      "id": "c-class",
+      "brandId": "mercedes",
+      "modelName": "C-Class",
+      "year": "2023"
+    },
+    {
+      "id": "e-class",
+      "brandId": "mercedes",
+      "modelName": "E-Class",
+      "year": "2024"
+    },
+    {
+      "id": "s-class",
+      "brandId": "mercedes",
+      "modelName": "S-Class",
+      "year": "2022"
+    },
+    {
+      "id": "g-class",
+      "brandId": "mercedes",
+      "modelName": "G-Class",
+      "year": "2023"
+    },
+    {
+      "id": "mustang",
+      "brandId": "ford",
+      "modelName": "Mustang",
+      "year": "2024"
+    },
+    {
+      "id": "bronco",
+      "brandId": "ford",
+      "modelName": "Bronco",
+      "year": "2023"
+    },
+    { "id": "f-150", "brandId": "ford", "modelName": "F-150", "year": "2022" },
+    { "id": "gt", "brandId": "ford", "modelName": "GT", "year": "2021" },
+    {
+      "id": "mx-5",
+      "brandId": "mazda",
+      "modelName": "MX-5 Miata",
+      "year": "2023"
+    },
+    { "id": "cx-5", "brandId": "mazda", "modelName": "CX-5", "year": "2024" },
+    {
+      "id": "mazda3",
+      "brandId": "mazda",
+      "modelName": "Mazda3",
+      "year": "2022"
+    },
+    {
+      "id": "huayra",
+      "brandId": "pagani",
+      "modelName": "Huayra",
+      "year": "2021"
+    },
+    {
+      "id": "zonda",
+      "brandId": "pagani",
+      "modelName": "Zonda R",
+      "year": "2020"
+    }
+  ],
+  "modelDetails": [
+    {
+      "id": "a4",
+      "brandId": "audi",
+      "modelName": "A4",
+      "year": "2023",
+      "description": "Audi A4 – це популярний середньорозмірний седан, який є ідеальним вибором для тих, хто цінує комфорт, продуктивність. Модель має витончений дизайн, потужні двигуни та передові технології.",
+      "imageUrl": "/images/audi-a4.jpg",
+      "facts": [
+        "Об'єм двигуна: від 1.4 до 3.0 літра",
+        "Доступні комплектації: Base, Premium, S line",
+        "Потужність: від 150 до 347 к.с."
+      ]
+    },
+    {
+      "id": "911",
+      "brandId": "porsche",
+      "modelName": "911 Carrera",
+      "year": "2023",
+      "description": "Porsche 911 – це ікона спортивних автомобілів. Carrera є базовою моделлю, але все одно пропонує неймовірну динаміку та керованість завдяки задньомоторному компонуванню.",
+      "imageUrl": "/images/porsche-911.jpg",
+      "facts": [
+        "Двигун: 3.0-літровий 6-циліндровий твін-турбо (Boxer)",
+        "Привід: Задній (Carrera) або повний (Carrera 4)",
+        "Розгін 0-100 км/год: приблизно 4.0 секунди"
+      ]
+    },
+    {
+      "id": "mustang",
+      "brandId": "ford",
+      "modelName": "Mustang",
+      "year": "2024",
+      "description": "Нове покоління Ford Mustang зберігає класичний дух muscle car, але додає сучасні технології та оновлений дизайн. Доступний як з двигуном EcoBoost, так і з потужним V8.",
+      "imageUrl": "/images/ford-mustang.jpg",
+      "facts": [
+        "Двигуни: 2.3L EcoBoost (4-цил.) або 5.0L Coyote V8",
+        "Новий 'Digital Cockpit' з двома великими екранами",
+        "Має функцію 'Remote Rev' (дистанційний запуск двигуна з брелока)"
+      ]
+    }
+  ],
+  "users": []
+}

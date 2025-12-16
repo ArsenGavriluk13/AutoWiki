@@ -1,0 +1,100 @@
+.profilePage {
+  min-height: 100vh;
+  background-color: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding-bottom: 50px;
+}
+
+.mainContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+.profileCard {
+  background-color: #1a1a1a;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.1);
+}
+
+.avatarPlaceholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #333;
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.userName {
+  font-size: 2em;
+  margin: 0 0 10px 0;
+}
+
+.userEmail {
+  font-size: 1.2em;
+  color: #aaa;
+  margin: 0 0 30px 0;
+}
+
+.infoSection {
+  width: 100%;
+  text-align: left;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.infoSection h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: red;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+.infoSection p {
+  margin: 10px 0;
+  color: #ddd;
+}
+
+.logoutButton {
+  background-color: transparent;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.logoutButton:hover {
+  background-color: red;
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 20px;
+  }
+  .profileCard {
+    padding: 25px;
+  }
+}
